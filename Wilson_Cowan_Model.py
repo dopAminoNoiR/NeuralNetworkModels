@@ -102,6 +102,6 @@ ani = animation.ArtistAnimation(fig, ims, interval=100, blit=True)
 
 # Save animation using PillowWriter
 pillow_writer = animation.PillowWriter(fps= 10)
-ani.save('WilsonCowan.gif', writer=pillow_writer)
+ani.save('NewFile.gif', writer=pillow_writer)
 
 plt.show()
