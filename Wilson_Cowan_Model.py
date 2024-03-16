@@ -5,11 +5,11 @@ import itertools
 from tqdm import tqdm
 
 ###########################################################
-random_activity = 0.01  # Spontaneous activity of each neuron
-connect_distance = 3  # Max connectivity distance
+random_activity = 0.005  # Spontaneous activity of each neuron
+connect_distance = 4.5  # Max connectivity distance
 dimensions = [50, 50]  # Grid dimensions
 thres = 4  # Activity threshold of each neuron
-refractory_period = 6  # Refractory period in time steps
+refractory_period = 5  # Refractory period in time steps
 time_steps = 300  # Number of time steps
 ###########################################################
 
@@ -90,14 +90,17 @@ for t in tqdm(range(time_steps), desc='Simulating'):
 
 
 # Visualization
-fig, ax = plt.subplots(dpi = 150)
+fig, ax = plt.subplots(dpi=150)
 im = ax.imshow(activity_history[0], cmap='binary', interpolation='nearest')
-text = ax.text(0.5, 1.05, 'Time Step: 0', transform=ax.transAxes, ha="center")
+time_text = ax.text(0.5, 1.05, 'Time Step: 0', transform=ax.transAxes, ha="center")
+
+# Adjust subplot layout to make room for legend text below the animation
+plt.subplots_adjust(bottom=0.2)
 
 def update(frame):
     im.set_array(activity_history[frame])
-    text.set_text('Time Step: {}'.format(frame))
-    return im, text
+    time_text.set_text(f'Time Step: {frame}')
+    return im, time_text
 
 ani = animation.FuncAnimation(fig, update, frames=time_steps, interval=100, blit=True)
 
@@ -110,4 +113,4 @@ with tqdm(total=total_frames, desc='Saving animation') as pbar:
     def update_progress(frame, total_frames=total_frames):
         pbar.update(1)
         
-    ani.save('NewFile.gif', writer=pillow_writer, progress_callback=update_progress)
+    ani.save(f'NewFile(backgr.={random_activity}, dist.={connect_distance}, thres.={thres}, refr. t={refractory_period}).gif', writer=pillow_writer, progress_callback=update_progress)
