@@ -5,12 +5,12 @@ import itertools
 from tqdm import tqdm
 
 ###########################################################
-random_activity = 0.033  # Spontaneous activity of each neuron
-connect_distance = 6  # Max connectivity distance
+random_activity = 0.001  # Spontaneous activity of each neuron
+connect_distance = 2  # Max connectivity distance
 dimensions = [50, 50]  # Grid dimensions
-thres = 4  # Activity threshold of each neuron
-refractory_period = 4  # Refractory period in time steps
-time_steps = 500  # Number of time steps
+thres = 2  # Activity threshold of each neuron
+refractory_period = 6  # Refractory period in time steps
+time_steps = 300  # Number of time steps
 ###########################################################
 
 
