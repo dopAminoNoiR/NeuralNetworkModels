@@ -1,2 +1,1 @@
-# NeuralModels
- Various models for simulating neural networks or single neurons
+This simple neural network model was described by John M. Beggs (2022): The Cortex and the Critical Point Understanding the Power of Emergence. The MIT Press, pp. 35-42. https://doi.org/10.7551/mitpress/13588.001.0001.
